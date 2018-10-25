@@ -21,15 +21,41 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
     //console.log(typeof dancerMakerFunction, dancerMakerFunction)
     //blinkyDancer = new makeBlinkyDancer(10, 20, timeBetweenSteps);
-
+    //dancerMakerFunction contains method name from html file--> "makeBlinkyDancer"
     // make a new dancer with a random position
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 1000
+      $("body").height() * Math.random(), //top
+      $("body").width() * Math.random(), //left
+      Math.random() * 1000 // timeBetweenSteps
     );
-
-    $('body').append(dancer.$node);
+    $('body').append(dancer.$node); //display on webpage
   });
+
+  //this button will add a skeleton onto dance floor
+  $('.addSkeletonButton').on('click',function(event){
+    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+    var dancerMakerFunction = window[dancerMakerFunctionName];
+    var skeleton = new dancerMakerFunction(
+      $("body").height() * Math.random(), //top
+      $("body").width() * Math.random(), //left
+      Math.random() * 1000 // timeBetweenSteps
+    );
+    $('body').append(skeleton.$node); //display on webpage
+  });
+
+  //this button will add a witch onto dance floor
+  $('.addWitchButton').on('click',function(event){
+    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+    var dancerMakerFunction = window[dancerMakerFunctionName];
+    var witch = new dancerMakerFunction(
+      $("body").height() * Math.random(), //top
+      $("body").width() * Math.random(), //left
+      Math.random() * 1000 // timeBetweenSteps
+    );
+    $('body').append(witch.$node); //display on webpage
+  });
+
+
+
 });
 
