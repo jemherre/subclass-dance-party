@@ -1,11 +1,13 @@
-var makeWitchDancer = function(top, left, timeBetweenSteps) {
+var makeWitchDancer = function(top, left, timeBetweenSteps,id) {
   //call dancer
   makeDancer.call(this, top, left, timeBetweenSteps);
   //make sure to change class name to inherit appropraite CSS properties
   this.$node.attr("class","witchDancer");
-  this.$node.prepend('<img id="witch" src="halloween/witch.gif" width="170" height="200" />');
-
-
+  this.$node.attr("src","halloween/witch.gif");
+  var uniqueID = "witch_"+id.toString();
+  this.$node.attr("id",uniqueID);
+  this.$node.attr("width","170");
+  this.$node.attr("height","200");
 };
 
 //set up prototypes

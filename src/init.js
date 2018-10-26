@@ -2,6 +2,7 @@ $(document).ready(function() {
   window.dancers = [];
   var ghostCount = 0;
   var skeletonCount = 0;
+  var witchCount = 0;
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -54,14 +55,14 @@ $(document).ready(function() {
     var witch = new dancerMakerFunction(
       ($("body").height() - 200)  * Math.random(), //top
       ($("body").width() -200) * Math.random(), //left
-      Math.random() * 1000 // timeBetweenSteps
+      Math.random() * 1000, // timeBetweenSteps
+      witchCount++
     );
     $('.scaryMode').append(witch.$node); //display on webpage
     window.dancers.push(witch);
   });
 
     //this button will add a ghost onto dance floor
-
     $('.addGhostButton').on('click',function(event){
       var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
       var dancerMakerFunction = window[dancerMakerFunctionName];
@@ -75,48 +76,45 @@ $(document).ready(function() {
       window.dancers.push(ghost);
     });
 
-    //once the ghost is clicked change color
-    $('img').on('click',function(event) {
-      console.log(event);
-      var selected = event.target.id;
-      selected= "#"+selected.toString();
-      console.log(selected);
-      //$("#img").rotate(45);
-    //   $(event.target.id).click(function(){
-    //     var div = $("div");
-    //     div.animate({height: '300px'}, "slow");
-    //     div.animate({width: '300px'}, "slow");
-    //     div.animate({height: '100px', opacity: '0.4'}, "slow");
-    //     div.animate({width: '100px', opacity: '0.8'}, "slow");
-    // });
-   });
+    //you have to use document since we are loading contents dynamicaally!
+    $(document).on('click', 'img', function () {
+      var selectedID = "#"+this.id;
+      $(selectedID).animate({
+        height: '+=100px',
+        width: '+=100px'
+      }).animate({
+        height: '-=100px',
+        width: '-=100px'
+      });
+    });
 
     //line them up
     $('.lineUpButton').on('click',function(event){
       var halfRoom = Math.floor(window.dancers.length/2);
-      var leftLocation_x = 50;
-      var leftLocation_y = 30;
-      var righttLocation_x = $("body").width() - 200;
-      var rightLocation_y = 30;
-      console.log(halfRoom,window.dancers)
+      var leftLocation_x = Math.floor($('body').width()/2)-500;
+      var leftLocation_y = 50;
+      var rightLocation_x = Math.floor($('body').width()/2)+400;
+      var rightLocation_y = 50;
       for(var i= 0; i< window.dancers.length; i++) {
         if(i > halfRoom){
-          var newLocation = 'top: '+rightLocation_y.toString()+'px; left: '+righttLocation_x.toString()+'px;';
-          console.log(i,newLocation,window.dancers[i]);
+          var newLocation = 'top: '+rightLocation_y.toString()+'px; left: '+rightLocation_x.toString()+'px;';
           window.dancers[i].$node.attr("style",newLocation);
           //update location
-          rightLocation_y = rightLocation_y + 30;
+          rightLocation_y = rightLocation_y + 60;
+          rightLocation_x = rightLocation_x + 40;
         }else{
           var newLocation = 'top: '+leftLocation_y.toString()+'px; left: '+leftLocation_x.toString()+'px;';
-          console.log(i,newLocation,window.dancers[i]);
           window.dancers[i].$node.attr("style",newLocation);
           //update location
-          leftLocation_y = leftLocation_y + 30;
+          leftLocation_y = leftLocation_y + 60;
+          leftLocation_x = leftLocation_x - 40;
         }
 
       }
-
     });
+
+    //terrorMode
+
 
 
 

@@ -1,11 +1,14 @@
-var makeSkeletonDancer = function(top, left, timeBetweenSteps) {
+var makeSkeletonDancer = function(top, left, timeBetweenSteps,id) {
   //call dancer
-  makeDancer.call(this, top, left, timeBetweenSteps);
+  makeDancer.call(this, top, left, timeBetweenSteps,id);
   //make sure to change class name to inherit appropraite CSS properties
   this.$node.attr("class","skeletonDancer");
-  this.$node.prepend('<img id="skeleton" src="halloween/skeleton_ultimate_move.gif" width="200" height="225" />');
-  this.$node.prepend('<div class="skeletonEyes"> <div class="eye1"> </div>');
-  this.$node.prepend('<div class="eye2"> </div> </div>');
+  var uniqueID = "skeleton_"+id.toString();
+  this.$node.attr("id",uniqueID);
+  this.$node.attr("src","halloween/skeleton_ultimate_move.gif");
+  this.$node.attr("width","200");
+  this.$node.attr("height","225");
+
 };
 
 //set up prototypes
