@@ -36,11 +36,11 @@ $(document).ready(function() {
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
     var dancerMakerFunction = window[dancerMakerFunctionName];
     var skeleton = new dancerMakerFunction(
-      $("body").height() * Math.random(), //top
-      $("body").width() * Math.random(), //left
+      ($("body").height() - 200)  * Math.random(), //top
+      ($("body").width() -200) * Math.random(), //left
       Math.random() * 1000 // timeBetweenSteps
     );
-    $('body').append(skeleton.$node); //display on webpage
+    $('.scaryMode').append(skeleton.$node); //display on webpage
   });
 
   //this button will add a witch onto dance floor
@@ -48,13 +48,24 @@ $(document).ready(function() {
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
     var dancerMakerFunction = window[dancerMakerFunctionName];
     var witch = new dancerMakerFunction(
-      $("body").height() * Math.random(), //top
-      $("body").width() * Math.random(), //left
+      ($("body").height() - 200)  * Math.random(), //top
+      ($("body").width() -200) * Math.random(), //left
       Math.random() * 1000 // timeBetweenSteps
     );
-    $('body').append(witch.$node); //display on webpage
+    $('.scaryMode').append(witch.$node); //display on webpage
   });
 
+    //this button will add a ghost onto dance floor
+    $('.addGhostButton').on('click',function(event){
+      var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+      var dancerMakerFunction = window[dancerMakerFunctionName];
+      var ghost = new dancerMakerFunction(
+        ($("body").height() - 200)  * Math.random(), //top
+        ($("body").width() -200) * Math.random(), //left
+        Math.random() * 1000 // timeBetweenSteps
+      );
+      $('.scaryMode').append(ghost.$node); //display on webpage
+    });
 
 
 });

@@ -3,6 +3,9 @@ var makeWitchDancer = function(top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
   //make sure to change class name to inherit appropraite CSS properties
   this.$node.attr("class","witchDancer");
+  this.$node.prepend('<img id="witch" src="halloween/witch.gif" width="170" height="200" />');
+
+
 };
 
 //set up prototypes
@@ -18,5 +21,5 @@ makeWitchDancer.prototype.oldStep = makeWitchDancer.prototype.step;
 //over writes makeDancer.step
 makeWitchDancer.prototype.step = function() {
   this.oldStep();
-  this.$node.toggle();
+  //this.$node.toggle();
 };

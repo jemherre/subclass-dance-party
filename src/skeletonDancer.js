@@ -3,6 +3,9 @@ var makeSkeletonDancer = function(top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
   //make sure to change class name to inherit appropraite CSS properties
   this.$node.attr("class","skeletonDancer");
+  this.$node.prepend('<img id="skeleton" src="halloween/skeleton_ultimate_move.gif" width="200" height="225" />');
+  this.$node.prepend('<div class="skeletonEyes"> <div class="eye1"> </div>');
+  this.$node.prepend('<div class="eye2"> </div> </div>');
 };
 
 //set up prototypes
@@ -18,5 +21,6 @@ makeSkeletonDancer.prototype.oldStep = makeSkeletonDancer.prototype.step;
 //over writes makeDancer.step
 makeSkeletonDancer.prototype.step = function() {
   this.oldStep();
-  this.$node.toggle();
+  //this.$node.toggle();
 };
+
