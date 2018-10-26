@@ -8,18 +8,28 @@
     <script src="src/blinkyDancer.js"></script>
     <script src="src/skeletonDancer.js"></script>
     <script src="src/witchDancer.js"></script>
+    <script src="src/ghostDancer.js"></script>
   </head>
   <body>
+    <div class="hideTopbar">
+      <div class="showTopbar">
+        <a class="addSkeletonButton" data-dancer-maker-function-name="makeSkeletonDancer">add a skeleton dancer</a>
+        <a class="addWitchButton" data-dancer-maker-function-name="makeWitchDancer">add a witch dancer</a>
+        <a class="addGhostButton" data-dancer-maker-function-name="makeGhostDancer">add a ghost dancer</a>
+       <!-- <a class="showScaryMode" data-dancer-maker-function-name="makeGhostDancer">add a ghost dancer</a> -->
+        <a class="lineUpButton" data-dancer-maker-function-name="lineUp">Line Them Up!</a>
+        <video class="audioFile" controls="" autoplay="auto" name="media"><source src="halloween/The Nightmare Before Christmas - This is halloween.mp3" type="audio/mpeg">
 
-    <div class="topbar">
-      <span class="title">object dance party</span> <!-- Not needed-->
-      <a class="addDancerButton" data-dancer-maker-function-name="makeBlinkyDancer">add a blinky dancer</a>
-      <a class="addSkeletonButton" data-dancer-maker-function-name="makeSkeletonDancer">add a skeleton dancer</a>
-      <a class="addWitchButton" data-dancer-maker-function-name="makeWitchDancer">add a witch dancer</a>
+      </div>
+
     </div>
+
 
     <script src="src/init.js"></script>
     <!-- Dancers are added below-->
+    <div class="scaryMode"></div>
+
+  </body>
 
   </body>
 </html>
